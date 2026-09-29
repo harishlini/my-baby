@@ -1,0 +1,277 @@
+.personal-memories-page {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(circle at 50% 30%, #4b0035 0%, #180018 45%, #050005 100%);
+
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.personal-memories-page .back-button {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+
+  padding: 12px 20px;
+  border: 1px solid rgba(255, 105, 180, 0.5);
+  border-radius: 30px;
+
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+
+  cursor: pointer;
+  font-size: 15px;
+
+  backdrop-filter: blur(10px);
+}
+
+.memories-card {
+  width: min(90%, 650px);
+  padding: 55px 35px;
+
+  text-align: center;
+
+  border: 1px solid rgba(255, 105, 180, 0.35);
+  border-radius: 35px;
+
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 0 30px rgba(255, 0, 128, 0.25),
+    inset 0 0 30px rgba(255, 255, 255, 0.03);
+}
+
+.memory-icon {
+  font-size: 70px;
+  animation: heartbeat 1.4s infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.18);
+  }
+}
+
+.memories-card h1 {
+  margin: 20px 0 10px;
+
+  font-size: clamp(28px, 5vw, 48px);
+  letter-spacing: 3px;
+
+  background: linear-gradient(
+    90deg,
+    #ff69b4,
+    #ffffff,
+    #ff1493
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.memory-subtitle {
+  color: #ffd6ec;
+  font-size: 17px;
+  margin-bottom: 35px;
+}
+
+.memory-search-box {
+  display: flex;
+  gap: 12px;
+
+  width: 100%;
+  max-width: 550px;
+
+  margin: auto;
+}
+
+.memory-search-box input {
+  flex: 1;
+
+  padding: 17px 20px;
+
+  border-radius: 30px;
+  border: 1px solid rgba(255, 105, 180, 0.5);
+
+  outline: none;
+
+  background: rgba(0, 0, 0, 0.35);
+  color: white;
+
+  font-size: 16px;
+}
+
+.memory-search-box input::placeholder {
+  color: #d9a6c1;
+}
+
+.memory-search-box input:focus {
+  border-color: #ff1493;
+
+  box-shadow:
+    0 0 10px #ff1493,
+    0 0 30px rgba(255, 20, 147, 0.35);
+}
+
+.memory-search-box button {
+  padding: 0 24px;
+
+  border: none;
+  border-radius: 30px;
+
+  background: linear-gradient(
+    135deg,
+    #ff1493,
+    #ff4fa3
+  );
+
+  color: white;
+
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.memory-hint {
+  margin-top: 25px;
+  color: #c99ab4;
+}
+
+/* SECRET */
+
+.secret-memory {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  background:
+    radial-gradient(circle, #7a004f 0%, #25001f 45%, #030003 100%);
+}
+
+.big-heart {
+  font-size: 150px;
+
+  animation: bigHeartbeat 1.2s infinite;
+}
+
+@keyframes bigHeartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.secret-memory h1 {
+  margin: 10px 20px;
+
+  font-size: clamp(30px, 7vw, 70px);
+
+  color: white;
+
+  text-shadow:
+    0 0 10px #ff1493,
+    0 0 30px #ff1493,
+    0 0 60px #ff1493;
+}
+
+.secret-memory p {
+  color: #ffd6ec;
+  font-size: 18px;
+}
+
+.secret-chat {
+  margin-top: 25px;
+}
+
+.chat-message {
+  padding: 15px 25px;
+
+  border-radius: 25px;
+
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 105, 180, 0.4);
+
+  color: white;
+}
+
+.secret-close {
+  margin-top: 35px;
+
+  padding: 14px 25px;
+
+  border: 1px solid rgba(255, 105, 180, 0.5);
+  border-radius: 30px;
+
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+
+  cursor: pointer;
+}
+
+.heart-rain {
+  position: absolute;
+
+  top: 5%;
+  left: 0;
+
+  width: 100%;
+
+  font-size: 35px;
+  letter-spacing: 30px;
+
+  animation: floatingHearts 8s linear infinite;
+}
+
+@keyframes floatingHearts {
+  0% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(-120vh);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .memories-card {
+    padding: 40px 20px;
+  }
+
+  .memory-search-box {
+    flex-direction: column;
+  }
+
+  .memory-search-box button {
+    padding: 15px;
+  }
+
+  .big-heart {
+    font-size: 100px;
+  }
+}

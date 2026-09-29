@@ -1,0 +1,419 @@
+:root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #fff;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --accent: #aa3bff;
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --border: #2e303a;
+    --code-bg: #1f2028;
+    --accent: #c084fc;
+    --accent-bg: rgba(192, 132, 252, 0.15);
+    --accent-border: rgba(192, 132, 252, 0.5);
+    --social-bg: rgba(47, 48, 58, 0.5);
+    --shadow:
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  }
+
+  #social .button-icon {
+    filter: invert(1) brightness(2);
+  }
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  width: 1126px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-inline: 1px solid var(--border);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+p {
+  margin: 0;
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}
+/* =========================
+   SECTION PAGES
+========================= */
+
+.section-page {
+  min-height: 100vh;
+  padding: 30px 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #520039,
+      #080008 70%
+    );
+
+  color: white;
+  overflow: hidden;
+}
+
+.back-button {
+  position: absolute;
+  top: 25px;
+  left: 25px;
+
+  padding: 12px 20px;
+
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 30px;
+
+  background: rgba(255,255,255,.08);
+  color: white;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(10px);
+}
+
+.back-button:hover {
+  background: rgba(255,0,128,.2);
+}
+
+
+/* =========================
+   CALCULATOR
+========================= */
+
+.calculator-card {
+  width: min(92%, 500px);
+
+  padding: 45px 30px;
+
+  text-align: center;
+
+  border-radius: 30px;
+
+  background: rgba(255,255,255,.08);
+
+  border: 1px solid rgba(255,255,255,.15);
+
+  backdrop-filter: blur(20px);
+
+  box-shadow:
+    0 0 70px rgba(255,0,128,.25);
+
+  animation: cardAppear .7s ease;
+}
+
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.calculator-heart {
+  font-size: 75px;
+
+  animation: heartbeat 1.2s infinite;
+}
+
+.calculator-card h1 {
+  font-size: clamp(28px, 7vw, 48px);
+
+  margin: 10px 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff007f,
+      white,
+      #ff4da6
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.calculator-card p {
+  color: #ddd;
+}
+
+.calculator-card input {
+  width: 100%;
+
+  padding: 16px;
+
+  margin: 8px 0;
+
+  border-radius: 14px;
+
+  border: 1px solid rgba(255,255,255,.2);
+
+  background: rgba(0,0,0,.3);
+
+  color: white;
+
+  outline: none;
+
+  font-size: 16px;
+}
+
+.calculator-card input:focus {
+  border-color: #ff0080;
+
+  box-shadow:
+    0 0 20px
+    rgba(255,0,128,.3);
+}
+
+.calculate-button {
+  width: 100%;
+
+  padding: 16px;
+
+  margin-top: 15px;
+
+  border: none;
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff007f,
+      #ff3cac
+    );
+
+  color: white;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  font-size: 15px;
+
+  transition: .3s;
+}
+
+.calculate-button:hover {
+  transform: scale(1.03);
+
+  box-shadow:
+    0 0 35px
+    rgba(255,0,128,.6);
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.love-result {
+  margin-top: 30px;
+
+  padding: 25px;
+
+  border-radius: 25px;
+
+  background:
+    rgba(255,0,128,.1);
+
+  border:
+    1px solid
+    rgba(255,0,128,.3);
+
+  animation:
+    resultAppear .8s ease;
+}
+
+@keyframes resultAppear {
+  0% {
+    opacity: 0;
+    transform: scale(.4);
+  }
+
+  70% {
+    transform: scale(1.08);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.result-hearts {
+  font-size: 25px;
+
+  animation:
+    heartFloat 1.5s infinite;
+}
+
+.percentage {
+  font-size: 85px;
+
+  font-weight: 900;
+
+  color: #ff4da6;
+
+  text-shadow:
+    0 0 15px #ff0080,
+    0 0 40px #ff0080;
+}
+
+.love-result h2 {
+  margin: 5px 0;
+}
+
+.heart-explosion {
+  font-size: 30px;
+
+  margin-top: 15px;
+
+  animation:
+    heartExplosion 1.5s infinite;
+}
+
+@keyframes heartExplosion {
+  0% {
+    transform: scale(.7);
+    opacity: .5;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(.7);
+    opacity: .5;
+  }
+}
+
+
+/* =========================
+   EXTRA MOVING TEXT
+========================= */
+
+.text3 {
+  top: 43%;
+  left: -100%;
+
+  animation:
+    moveRight 25s linear infinite;
+
+  animation-delay: 3s;
+}
+
+
+/* =========================
+   COMING SOON
+========================= */
+
+.coming-soon {
+  text-align: center;
+
+  padding: 50px;
+
+  border-radius: 30px;
+
+  background:
+    rgba(255,255,255,.08);
+
+  backdrop-filter: blur(20px);
+}
+
+.coming-soon div {
+  font-size: 80px;
+
+  animation:
+    heartbeat 1.2s infinite;
+}
+
+.coming-soon h1 {
+  color: #ff4da6;
+}

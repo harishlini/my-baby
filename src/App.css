@@ -1,0 +1,2182 @@
+/* =========================================================
+   MY BABY — COMPLETE CREATIVE APP CSS
+   Every section has its own visual identity
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #050008;
+  color: white;
+  overflow-x: hidden;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+/* =========================================================
+   GLOBAL ANIMATIONS
+========================================================= */
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.16);
+  }
+}
+
+@keyframes softPulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(40px) rotate(0deg);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(-120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* =========================================================
+   LOADING — CINEMATIC
+========================================================= */
+
+.loading-screen {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #ff168d 0%,
+      #56002f 18%,
+      #15000e 48%,
+      #020002 100%
+    );
+}
+
+.loading-screen::before {
+  content: "♡  ♥  ♡  ♥  ♡";
+
+  position: absolute;
+
+  font-size: 60px;
+  letter-spacing: 45px;
+
+  color: rgba(255, 255, 255, 0.04);
+
+  animation: softPulse 3s infinite;
+}
+
+.loading-word {
+  position: relative;
+  z-index: 2;
+
+  font-size: clamp(55px, 12vw, 130px);
+  font-weight: 900;
+
+  letter-spacing: 12px;
+
+  color: white;
+
+  text-shadow:
+    0 0 10px #ff1493,
+    0 0 30px #ff1493,
+    0 0 80px #ff1493;
+
+  animation:
+    loadingWord 1s ease forwards;
+}
+
+@keyframes loadingWord {
+  0% {
+    opacity: 0;
+    transform: scale(0.2) rotate(-8deg);
+    filter: blur(12px);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale(1.12) rotate(2deg);
+    filter: blur(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* =========================================================
+   LOGIN — SECRET LOVE PORTAL
+========================================================= */
+
+.login-screen {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 25%,
+      rgba(255, 0, 128, 0.45),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 15% 85%,
+      rgba(145, 0, 255, 0.25),
+      transparent 25%
+    ),
+    #050006;
+}
+
+.login-screen::before,
+.login-screen::after {
+  content: "";
+
+  position: absolute;
+
+  width: 280px;
+  height: 280px;
+
+  border-radius: 50%;
+
+  filter: blur(70px);
+
+  pointer-events: none;
+}
+
+.login-screen::before {
+  background: rgba(255, 0, 128, 0.15);
+
+  top: -100px;
+  left: -80px;
+
+  animation: loginOrb 7s infinite alternate;
+}
+
+.login-screen::after {
+  background: rgba(130, 30, 255, 0.12);
+
+  bottom: -100px;
+  right: -80px;
+
+  animation: loginOrb 8s infinite alternate-reverse;
+}
+
+@keyframes loginOrb {
+  to {
+    transform: translate(80px, -40px) scale(1.2);
+  }
+}
+
+.login-card {
+  width: min(90%, 440px);
+
+  padding: 48px 35px;
+
+  text-align: center;
+
+  position: relative;
+  z-index: 2;
+
+  border-radius: 35px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.11),
+      rgba(255, 255, 255, 0.035)
+    );
+
+  border: 1px solid rgba(255, 130, 200, 0.35);
+
+  backdrop-filter: blur(25px);
+
+  box-shadow:
+    0 0 30px rgba(255, 0, 128, 0.18),
+    inset 0 0 35px rgba(255, 255, 255, 0.025);
+
+  animation: pageEnter 0.9s ease;
+}
+
+.big-heart {
+  font-size: 78px;
+
+  filter:
+    drop-shadow(0 0 12px #ff1493)
+    drop-shadow(0 0 30px #ff1493);
+
+  animation: heartbeat 1.3s infinite;
+}
+
+.login-card h1 {
+  margin: 15px 0 5px;
+
+  font-size: 44px;
+  letter-spacing: 6px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff1493,
+      white,
+      #ff69b4,
+      #c15cff
+    );
+
+  background-size: 250% auto;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: titleFlow 5s linear infinite;
+}
+
+@keyframes titleFlow {
+  to {
+    background-position: 250% center;
+  }
+}
+
+.login-card p {
+  color: #e9cddd;
+  margin-bottom: 28px;
+}
+
+.login-card input {
+  width: 100%;
+
+  padding: 16px 18px;
+  margin: 8px 0;
+
+  border-radius: 16px;
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  outline: none;
+
+  background: rgba(0, 0, 0, 0.35);
+
+  color: white;
+
+  font-size: 16px;
+
+  transition: 0.3s;
+}
+
+.login-card input:focus {
+  border-color: #ff1493;
+
+  box-shadow:
+    0 0 15px rgba(255, 20, 147, 0.45);
+
+  transform: translateY(-2px);
+}
+
+.login-card button {
+  width: 100%;
+
+  padding: 16px;
+
+  margin-top: 18px;
+
+  border: none;
+  border-radius: 18px;
+
+  color: white;
+
+  font-size: 16px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff007f,
+      #ff1493,
+      #8f2cff
+    );
+
+  box-shadow:
+    0 8px 25px rgba(255, 0, 127, 0.25);
+
+  transition: 0.3s;
+}
+
+.login-card button:hover {
+  transform: translateY(-4px) scale(1.02);
+
+  box-shadow:
+    0 0 35px rgba(255, 20, 147, 0.65);
+}
+
+/* Floating login hearts */
+
+.floating-heart {
+  position: absolute;
+
+  font-size: 32px;
+
+  opacity: 0;
+
+  animation: floatUp 6s infinite;
+}
+
+.heart1 {
+  left: 10%;
+  bottom: 0;
+}
+
+.heart2 {
+  left: 50%;
+  bottom: -30px;
+  animation-delay: 2s;
+}
+
+.heart3 {
+  right: 12%;
+  bottom: -20px;
+  animation-delay: 4s;
+}
+
+/* =========================================================
+   HOME — CINEMATIC LOVE UNIVERSE
+========================================================= */
+
+.home {
+  min-height: 100vh;
+
+  padding: 70px 20px;
+
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(255, 0, 128, 0.25),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(128, 0, 255, 0.18),
+      transparent 30%
+    ),
+    #050006;
+}
+
+.home::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 1px
+    );
+
+  background-size: 55px 55px;
+
+  opacity: 0.18;
+
+  animation: starsMove 20s linear infinite;
+
+  pointer-events: none;
+}
+
+@keyframes starsMove {
+  to {
+    background-position: 200px 200px;
+  }
+}
+
+.home header {
+  position: relative;
+  z-index: 2;
+
+  text-align: center;
+}
+
+.logo-heart {
+  font-size: 82px;
+
+  filter:
+    drop-shadow(0 0 12px #ff1493)
+    drop-shadow(0 0 35px #ff1493);
+
+  animation: heartbeat 1.4s infinite;
+}
+
+.home h1 {
+  font-size: clamp(45px, 9vw, 90px);
+
+  margin: 10px 0;
+
+  letter-spacing: 9px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff1493,
+      white,
+      #ff69b4,
+      #9d4dff
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.home header p {
+  color: #e7c8dc;
+  font-size: 18px;
+}
+
+/* Moving background text */
+
+.moving-text {
+  position: absolute;
+
+  white-space: nowrap;
+
+  font-size: 80px;
+  font-weight: 900;
+
+  color: rgba(255, 20, 147, 0.045);
+
+  pointer-events: none;
+
+  user-select: none;
+}
+
+.text1 {
+  top: 20%;
+  left: -100%;
+
+  animation: moveRight 18s linear infinite;
+}
+
+.text2 {
+  top: 65%;
+  right: -100%;
+
+  animation: moveLeft 20s linear infinite;
+}
+
+.text3 {
+  top: 43%;
+  left: -100%;
+
+  animation: moveRight 28s linear infinite;
+  animation-delay: 5s;
+}
+
+@keyframes moveRight {
+  to {
+    transform: translateX(230%);
+  }
+}
+
+@keyframes moveLeft {
+  to {
+    transform: translateX(-230%);
+  }
+}
+
+/* Home menu */
+
+.menu-grid {
+  max-width: 1050px;
+
+  margin: 65px auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(220px, 1fr));
+
+  gap: 20px;
+
+  position: relative;
+  z-index: 3;
+}
+
+.menu-grid button {
+  min-height: 135px;
+
+  padding: 25px;
+
+  border-radius: 28px;
+
+  border: 1px solid rgba(255, 255, 255, 0.13);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.09),
+      rgba(255, 255, 255, 0.035)
+    );
+
+  color: white;
+
+  font-size: 18px;
+  font-weight: 800;
+
+  backdrop-filter: blur(18px);
+
+  cursor: pointer;
+
+  position: relative;
+  overflow: hidden;
+
+  transition: 0.4s;
+}
+
+.menu-grid button::before {
+  content: "";
+
+  position: absolute;
+
+  width: 0;
+  height: 0;
+
+  left: 50%;
+  top: 50%;
+
+  border-radius: 50%;
+
+  background: rgba(255, 20, 147, 0.25);
+
+  transform: translate(-50%, -50%);
+
+  transition: 0.5s;
+}
+
+.menu-grid button:hover::before {
+  width: 400px;
+  height: 400px;
+}
+
+.menu-grid button:hover {
+  transform: translateY(-9px) scale(1.025);
+
+  border-color: rgba(255, 80, 180, 0.5);
+
+  box-shadow:
+    0 15px 45px rgba(255, 20, 147, 0.2);
+}
+
+/* Individual menu colors */
+
+.menu-grid button:nth-child(1):hover {
+  box-shadow: 0 0 35px rgba(255, 50, 100, 0.45);
+}
+
+.menu-grid button:nth-child(2):hover {
+  box-shadow: 0 0 35px rgba(155, 80, 255, 0.45);
+}
+
+.menu-grid button:nth-child(3):hover {
+  box-shadow: 0 0 35px rgba(255, 150, 180, 0.45);
+}
+
+.menu-grid button:nth-child(4):hover {
+  box-shadow: 0 0 35px rgba(0, 200, 255, 0.45);
+}
+
+.menu-grid button:nth-child(5):hover {
+  box-shadow: 0 0 35px rgba(255, 150, 50, 0.45);
+}
+
+.menu-grid button:nth-child(6):hover {
+  box-shadow: 0 0 35px rgba(255, 200, 50, 0.5);
+}
+
+.menu-grid button:nth-child(7):hover {
+  box-shadow: 0 0 35px rgba(0, 255, 190, 0.45);
+}
+
+.menu-grid button:nth-child(8):hover {
+  box-shadow: 0 0 35px rgba(190, 50, 255, 0.5);
+}
+
+/* =========================================================
+   SECTION PAGE / LOVE CALCULATOR
+========================================================= */
+
+.section-page {
+  min-height: 100vh;
+
+  padding: 80px 20px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(255, 20, 147, 0.24),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(180, 30, 255, 0.16),
+      transparent 30%
+    ),
+    #060006;
+}
+
+.section-page:has(.calculator-card) {
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(255, 30, 110, 0.28),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(255, 0, 170, 0.15),
+      transparent 30%
+    ),
+    #090006;
+}
+
+.back-button {
+  position: absolute;
+
+  top: 25px;
+  left: 25px;
+
+  z-index: 10;
+
+  padding: 11px 20px;
+
+  border-radius: 30px;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  background: rgba(255, 255, 255, 0.07);
+
+  color: white;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(12px);
+
+  transition: 0.3s;
+}
+
+.back-button:hover {
+  transform: translateX(-4px);
+
+  background: rgba(255, 20, 147, 0.18);
+
+  border-color: #904fff;
+}
+
+/* Calculator */
+
+.calculator-card {
+  width: min(520px, 92%);
+
+  padding: 48px 30px;
+
+  text-align: center;
+
+  border-radius: 35px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 20, 147, 0.13),
+      rgba(100, 0, 70, 0.25)
+    );
+
+  border: 1px solid rgba(255, 105, 180, 0.4);
+
+  backdrop-filter: blur(22px);
+
+  box-shadow:
+    0 0 35px rgba(255, 20, 147, 0.18);
+
+  animation: pageEnter 0.8s ease;
+}
+
+.calculator-heart {
+  font-size: 65px;
+
+  animation: heartbeat 1.2s infinite;
+
+  filter:
+    drop-shadow(0 0 15px #ff1493);
+}
+
+.calculator-card h1 {
+  font-size: clamp(30px, 7vw, 48px);
+
+  letter-spacing: 3px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff1493,
+      white,
+      #ff69b4
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.calculator-card > p {
+  color: #dfbfd2;
+}
+
+.calculator-card input {
+  width: 100%;
+
+  padding: 16px 18px;
+
+  margin: 10px 0;
+
+  box-sizing: border-box;
+
+  border-radius: 17px;
+
+  border: 1px solid rgba(255, 105, 180, 0.25);
+
+  outline: none;
+
+  background: rgba(0, 0, 0, 0.32);
+
+  color: white;
+
+  font-size: 16px;
+
+  transition: 0.3s;
+}
+
+.calculator-card input:focus {
+  border-color: #ff1493;
+
+  box-shadow: 0 0 20px rgba(255, 20, 147, 0.3);
+}
+
+.calculate-button {
+  width: 100%;
+
+  margin-top: 15px;
+
+  padding: 16px;
+
+  border: none;
+
+  border-radius: 50px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff007f,
+      #ff1493,
+      #9d2cff
+    );
+
+  color: white;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.calculate-button:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 0 35px rgba(255, 20, 147, 0.6);
+}
+
+.love-result {
+  margin-top: 30px;
+
+  padding: 25px;
+
+  border-radius: 25px;
+
+  background: rgba(255, 20, 147, 0.07);
+
+  border: 1px solid rgba(255, 105, 180, 0.25);
+
+  animation: resultPop 0.7s ease;
+}
+
+@keyframes resultPop {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.result-hearts {
+  font-size: 22px;
+  letter-spacing: 5px;
+}
+
+.percentage {
+  font-size: clamp(60px, 13vw, 95px);
+
+  font-weight: 900;
+
+  color: #ff4fa3;
+
+  text-shadow:
+    0 0 10px #ff1493,
+    0 0 35px #ff1493;
+
+  animation: heartbeat 1.5s infinite;
+}
+
+.love-result h2 {
+  letter-spacing: 2px;
+}
+
+.love-result p {
+  color: #ffb6d9;
+}
+
+/* =========================================================
+   ALBUM — PURPLE + GOLD LUXURY
+========================================================= */
+
+.album-page {
+  min-height: 100vh;
+
+  padding: 80px 20px;
+
+  color: white;
+
+  background:
+    radial-gradient(
+      circle at 50% 15%,
+      rgba(170, 80, 255, 0.28),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(255, 190, 60, 0.13),
+      transparent 25%
+    ),
+    #08050f;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.album-heading {
+  text-align: center;
+
+  margin-bottom: 50px;
+}
+
+.album-heading > div {
+  font-size: 70px;
+
+  filter:
+    drop-shadow(0 0 15px #a855f7);
+
+  animation: albumCamera 2s ease-in-out infinite;
+}
+
+@keyframes albumCamera {
+  0%,
+  100% {
+    transform: rotate(-4deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(4deg) scale(1.08);
+  }
+}
+
+.album-heading h1 {
+  font-size: clamp(38px, 8vw, 72px);
+
+  margin: 10px 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      #d8a7ff,
+      #fff3bd,
+      #a855f7
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.album-heading p {
+  color: #d8c9e8;
+}
+
+.scratch-grid {
+  max-width: 1150px;
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(280px, 1fr));
+
+  gap: 30px;
+}
+
+.scratch-card {
+  padding: 18px;
+
+  text-align: center;
+
+  border-radius: 28px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(170, 90, 255, 0.13),
+      rgba(255, 190, 70, 0.045)
+    );
+
+  border: 1px solid rgba(216, 167, 255, 0.25);
+
+  backdrop-filter: blur(16px);
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.35);
+
+  transition: 0.4s;
+}
+
+.scratch-card:hover {
+  transform: translateY(-12px) rotate(-1deg);
+
+  border-color: rgba(255, 215, 120, 0.55);
+
+  box-shadow:
+    0 25px 60px rgba(170, 80, 255, 0.2);
+}
+
+.photo-container {
+  width: 100%;
+
+  max-width: 350px;
+
+  height: 300px;
+
+  margin: auto;
+
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 22px;
+
+  box-shadow:
+    0 0 30px rgba(170, 80, 255, 0.2);
+}
+
+.memory-photo {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+.scratch-canvas {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  cursor: crosshair;
+
+  touch-action: none;
+}
+
+.scratch-card h3 {
+  margin-top: 18px;
+
+  color: #f4d88a;
+
+  letter-spacing: 1px;
+}
+
+/* =========================================================
+   HISTORY — VINTAGE ROSE LETTER
+========================================================= */
+
+.history-page {
+  min-height: 100vh;
+
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 85px 20px;
+
+  color: #fff8f5;
+
+  background:
+    radial-gradient(
+      circle at 50% 15%,
+      rgba(255, 150, 150, 0.25),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #210b12,
+      #10070a,
+      #2a0c16
+    );
+}
+
+.history-content {
+  position: relative;
+  z-index: 2;
+
+  width: min(900px, 94%);
+
+  margin: auto;
+
+  text-align: center;
+}
+
+.history-icon {
+  font-size: 75px;
+
+  filter:
+    drop-shadow(0 0 12px #ff8fa3);
+
+  animation: heartbeat 1.5s infinite;
+}
+
+.history-content h1 {
+  font-size: clamp(35px, 8vw, 70px);
+
+  margin: 10px 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ffd6dc,
+      #ff8fa3,
+      #fff
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.story-line {
+  width: 130px;
+  height: 2px;
+
+  margin: 25px auto;
+
+  background: #ff9aad;
+
+  box-shadow:
+    0 0 18px #ff9aad;
+}
+
+.story-card {
+  padding: 40px;
+
+  min-height: 300px;
+
+  border-radius: 25px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 235, 220, 0.12),
+      rgba(255, 120, 150, 0.05)
+    );
+
+  border: 1px solid rgba(255, 180, 190, 0.25);
+
+  backdrop-filter: blur(15px);
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.3);
+
+  text-align: left;
+
+  animation: storyReveal 1s ease;
+}
+
+@keyframes storyReveal {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.story-card p {
+  margin: 0;
+
+  font-size: 18px;
+
+  line-height: 2;
+
+  white-space: pre-line;
+
+  color: #fff1f2;
+}
+
+.music-button {
+  margin-top: 30px;
+
+  padding: 15px 30px;
+
+  border: none;
+
+  border-radius: 40px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff6f91,
+      #b83b5e
+    );
+
+  color: white;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.music-button:hover {
+  transform: scale(1.07);
+
+  box-shadow:
+    0 0 30px rgba(255, 111, 145, 0.55);
+}
+
+/* History hearts */
+
+.history-hearts span {
+  position: absolute;
+
+  bottom: -50px;
+
+  font-size: 25px;
+
+  opacity: 0;
+
+  animation: historyHeart 9s linear infinite;
+}
+
+.history-hearts span:nth-child(1) {
+  left: 10%;
+}
+
+.history-hearts span:nth-child(2) {
+  left: 25%;
+  animation-delay: 2s;
+}
+
+.history-hearts span:nth-child(3) {
+  left: 40%;
+  animation-delay: 4s;
+}
+
+.history-hearts span:nth-child(4) {
+  left: 60%;
+  animation-delay: 1s;
+}
+
+.history-hearts span:nth-child(5) {
+  left: 75%;
+  animation-delay: 3s;
+}
+
+.history-hearts span:nth-child(6) {
+  left: 90%;
+  animation-delay: 5s;
+}
+
+@keyframes historyHeart {
+  0% {
+    transform:
+      translateY(0)
+      rotate(0deg)
+      scale(0.7);
+
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.7;
+  }
+
+  100% {
+    transform:
+      translateY(-110vh)
+      rotate(360deg)
+      scale(1.4);
+
+    opacity: 0;
+  }
+}
+
+/* =========================================================
+   ANSWERS — ORANGE / PINK CHAT THEME
+========================================================= */
+
+.answers-page {
+  min-height: 100vh;
+
+  padding: 40px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at 30% 20%,
+      rgba(255, 140, 50, 0.25),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(255, 40, 130, 0.2),
+      transparent 25%
+    ),
+    #0d0505;
+
+  color: white;
+}
+
+.answers-card {
+  width: min(92%, 560px);
+
+  padding: 45px 30px;
+
+  text-align: center;
+
+  border-radius: 30px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 150, 70, 0.12),
+      rgba(255, 40, 130, 0.08)
+    );
+
+  border: 1px solid rgba(255, 160, 100, 0.25);
+
+  backdrop-filter: blur(20px);
+
+  box-shadow:
+    0 0 60px rgba(255, 100, 50, 0.12);
+}
+
+.answers-heart {
+  font-size: 65px;
+
+  animation: heartbeat 1.2s infinite;
+
+  filter:
+    drop-shadow(0 0 15px #ff7545);
+}
+
+.question-number {
+  color: #ffae7d;
+
+  font-size: 14px;
+
+  letter-spacing: 2px;
+}
+
+.answers-card h1 {
+  font-size: 38px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff7545,
+      #ffd2a8,
+      #ff4f9a
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.answers-card h2 {
+  font-size: 20px;
+
+  margin: 25px 0;
+}
+
+.answer-options {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+.answer-option {
+  padding: 16px;
+
+  border-radius: 18px;
+
+  border: 1px solid rgba(255, 180, 130, 0.16);
+
+  background: rgba(255, 255, 255, 0.045);
+
+  color: white;
+
+  cursor: pointer;
+
+  font-size: 15px;
+
+  text-align: left;
+
+  transition: 0.3s;
+}
+
+.answer-option:hover {
+  transform: translateX(8px);
+
+  border-color: #ff7545;
+
+  box-shadow:
+    0 0 20px rgba(255, 117, 69, 0.2);
+}
+
+.answer-option.selected {
+  background:
+    linear-gradient(
+      90deg,
+      #ff7545,
+      #ff3c91
+    );
+
+  border-color: transparent;
+
+  box-shadow:
+    0 0 25px rgba(255, 90, 100, 0.4);
+}
+
+.next-answer {
+  width: 100%;
+
+  margin-top: 25px;
+
+  padding: 16px;
+
+  border: none;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff7545,
+      #ff3c91
+    );
+
+  color: white;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.next-answer:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 0 30px rgba(255, 100, 80, 0.5);
+}
+
+/* =========================================================
+   GIFT — GOLDEN MAGIC
+========================================================= */
+
+.gift-page {
+  min-height: 100vh;
+
+  padding: 30px 20px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255, 200, 60, 0.24),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(255, 130, 20, 0.18),
+      transparent 25%
+    ),
+    #090604;
+
+  color: white;
+
+  overflow: hidden;
+}
+
+.gift-card {
+  width: min(92%, 500px);
+
+  padding: 45px 30px;
+
+  text-align: center;
+
+  border-radius: 32px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 210, 90, 0.12),
+      rgba(255, 120, 20, 0.05)
+    );
+
+  border: 1px solid rgba(255, 210, 100, 0.3);
+
+  backdrop-filter: blur(20px);
+
+  box-shadow:
+    0 0 70px rgba(255, 190, 50, 0.13);
+
+  animation: pageEnter 0.8s ease;
+}
+
+.gift-title h1 {
+  font-size: clamp(30px, 7vw, 50px);
+
+  background:
+    linear-gradient(
+      90deg,
+      #fff0a8,
+      #ffd45c,
+      #fff,
+      #e9a51c
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.big-gift {
+  font-size: 150px;
+
+  margin: 25px 0;
+
+  cursor: pointer;
+
+  filter:
+    drop-shadow(0 0 18px rgba(255, 190, 40, 0.5));
+
+  animation: giftBounce 1.5s infinite;
+}
+
+@keyframes giftBounce {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+
+  50% {
+    transform: translateY(-15px) rotate(3deg);
+  }
+}
+
+.gift-card input {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 16px;
+
+  border-radius: 16px;
+
+  border: 1px solid rgba(255, 210, 100, 0.2);
+
+  background: rgba(0, 0, 0, 0.35);
+
+  color: white;
+
+  outline: none;
+
+  font-size: 16px;
+}
+
+.gift-card input:focus {
+  border-color: #ffd45c;
+
+  box-shadow:
+    0 0 20px rgba(255, 200, 60, 0.3);
+}
+
+.gift-open-button {
+  width: 100%;
+
+  margin-top: 18px;
+
+  padding: 16px;
+
+  border: none;
+
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffd45c,
+      #e69a19
+    );
+
+  color: #281500;
+
+  font-weight: 900;
+
+  font-size: 16px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.gift-open-button:hover {
+  transform: scale(1.03);
+
+  box-shadow:
+    0 0 35px rgba(255, 200, 60, 0.55);
+}
+
+.wrong-password {
+  color: #ff806e;
+
+  margin-top: 10px;
+
+  animation: shake 0.35s;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-8px);
+  }
+
+  75% {
+    transform: translateX(8px);
+  }
+}
+
+/* Opened gift */
+
+.opened-gift {
+  width: min(95%, 850px);
+
+  text-align: center;
+
+  position: relative;
+
+  z-index: 2;
+
+  animation: giftReveal 1s ease;
+}
+
+@keyframes giftReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.opened-gift-icon {
+  font-size: 110px;
+
+  animation: heartbeat 1s infinite;
+}
+
+.opened-gift h1 {
+  font-size: clamp(30px, 7vw, 55px);
+
+  color: #ffd45c;
+
+  text-shadow:
+    0 0 20px rgba(255, 200, 60, 0.7);
+}
+
+.video-container {
+  margin: 30px auto 0;
+
+  width: 100%;
+  max-width: 700px;
+
+  border-radius: 25px;
+
+  overflow: hidden;
+
+  border: 2px solid rgba(255, 210, 80, 0.4);
+
+  box-shadow:
+    0 0 50px rgba(255, 190, 50, 0.18);
+
+  background: black;
+}
+
+.video-container video {
+  width: 100%;
+
+  display: block;
+
+  max-height: 70vh;
+}
+
+/* Emoji rain */
+
+.emoji-rain {
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  overflow: hidden;
+
+  z-index: 10;
+}
+
+.emoji-rain span {
+  position: absolute;
+
+  top: -50px;
+
+  font-size: 30px;
+
+  animation:
+    emojiFall 4s linear infinite;
+}
+
+.emoji-rain span:nth-child(1) {
+  left: 5%;
+}
+
+.emoji-rain span:nth-child(2) {
+  left: 15%;
+  animation-delay: 0.5s;
+}
+
+.emoji-rain span:nth-child(3) {
+  left: 25%;
+  animation-delay: 1s;
+}
+
+.emoji-rain span:nth-child(4) {
+  left: 35%;
+  animation-delay: 1.5s;
+}
+
+.emoji-rain span:nth-child(5) {
+  left: 45%;
+  animation-delay: 0.2s;
+}
+
+.emoji-rain span:nth-child(6) {
+  left: 55%;
+  animation-delay: 1.2s;
+}
+
+.emoji-rain span:nth-child(7) {
+  left: 65%;
+  animation-delay: 0.7s;
+}
+
+.emoji-rain span:nth-child(8) {
+  left: 75%;
+  animation-delay: 1.7s;
+}
+
+.emoji-rain span:nth-child(9) {
+  left: 85%;
+  animation-delay: 0.4s;
+}
+
+.emoji-rain span:nth-child(10) {
+  left: 95%;
+  animation-delay: 1.4s;
+}
+
+@keyframes emojiFall {
+  from {
+    transform:
+      translateY(0)
+      rotate(0deg);
+
+    opacity: 1;
+  }
+
+  to {
+    transform:
+      translateY(110vh)
+      rotate(360deg);
+
+    opacity: 0;
+  }
+}
+
+/* =========================================================
+   COMING SOON
+========================================================= */
+
+.coming-soon {
+  text-align: center;
+
+  padding: 60px;
+
+  border-radius: 30px;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  backdrop-filter: blur(20px);
+
+  animation: pageEnter 0.7s ease;
+}
+
+.coming-soon > div {
+  font-size: 70px;
+
+  animation: heartbeat 1.3s infinite;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+  .home {
+    padding: 55px 15px;
+  }
+
+  .home h1 {
+    letter-spacing: 5px;
+  }
+
+  .moving-text {
+    font-size: 42px;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+
+    margin-top: 45px;
+  }
+
+  .menu-grid button {
+    min-height: 105px;
+  }
+
+  .calculator-card,
+  .answers-card,
+  .gift-card {
+    padding: 35px 20px;
+  }
+
+  .big-gift {
+    font-size: 105px;
+  }
+
+  .story-card {
+    padding: 25px 20px;
+  }
+
+  .story-card p {
+    font-size: 16px;
+
+    line-height: 1.8;
+  }
+
+  .back-button {
+    top: 15px;
+    left: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================================
+   FINAL HEADING VISIBILITY FIX
+   Only fixes headings being covered/clipped.
+========================================================= */
+
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  overflow-x: hidden;
+}
+
+.home,
+.section-page,
+.album-page,
+.history-page,
+.gift-page,
+.answers-page {
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+}
+
+/* Put heading containers above decorative layers */
+.home header,
+.album-heading,
+.history-content,
+.gift-title,
+.answers-card,
+.calculator-card,
+.coming-soon {
+  position: relative;
+  z-index: 20;
+  isolation: isolate;
+  overflow: visible;
+}
+
+/* HOME */
+.home header .logo-heart {
+  position: relative;
+  z-index: 1;
+}
+
+.home header h1 {
+  position: relative;
+  z-index: 50;
+  display: block;
+  overflow: visible;
+  line-height: 1.15;
+}
+
+/* ALBUM */
+.album-heading > div {
+  position: relative;
+  z-index: 1;
+}
+
+.album-heading h1,
+.album-heading p {
+  position: relative;
+  z-index: 50;
+  display: block;
+  overflow: visible;
+  line-height: 1.15;
+}
+
+/* HISTORY */
+.history-icon {
+  position: relative;
+  z-index: 1;
+}
+
+.history-content h1,
+.history-content p {
+  position: relative;
+  z-index: 50;
+  display: block;
+  overflow: visible;
+  line-height: 1.15;
+}
+
+/* CALCULATOR */
+.calculator-card h1,
+.calculator-card p {
+  position: relative;
+  z-index: 50;
+  display: block;
+  overflow: visible;
+  line-height: 1.2;
+}
+
+/* ANSWERS */
+.answers-card h1,
+.answers-card p {
+  position: relative;
+  z-index: 50;
+  display: block;
+  overflow: visible;
+  line-height: 1.2;
+}
+
+/* GIFT */
+.gift-title,
+.gift-title h1,
+.gift-title p {
+  position: relative;
+  z-index: 50;
+  display: block;
+  overflow: visible;
+  line-height: 1.2;
+}
+
+/* Decorative layers must stay behind text */
+.home::before,
+.home::after,
+.album-page::before,
+.album-page::after,
+.history-page::before,
+.history-page::after {
+  pointer-events: none;
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+  .home header h1 {
+    font-size: clamp(38px, 12vw, 60px);
+    letter-spacing: 4px;
+    line-height: 1.15;
+    white-space: normal;
+  }
+
+  .album-heading h1,
+  .history-content h1,
+  .gift-title h1,
+  .answers-card h1,
+  .calculator-card h1 {
+    line-height: 1.15;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+}
+/* =========================================================
+   GLOBAL LOVE BACKGROUND — FIXED
+========================================================= */
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+  background: #050008;
+}
+
+#root {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Background image */
+.global-love-background {
+  position: fixed;
+  inset: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  z-index: 0;
+
+  overflow: hidden;
+  pointer-events: none;
+
+  background: #050008;
+}
+
+/* Actual image */
+.global-love-background img {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  display: block;
+}
+
+/* Dark overlay */
+.global-love-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(5, 0, 8, 0.35);
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   ALL WEBSITE CONTENT ABOVE BACKGROUND
+========================================================= */
+
+.loading-screen,
+.login-screen,
+.home,
+.section-page,
+.album-page,
+.history-page,
+.answers-page,
+.gift-page {
+  position: relative;
+
+  z-index: 1;
+
+  background: transparent !important;
+}
+
+/* Make sure these pages don't hide the image */
+.home,
+.login-screen,
+.section-page,
+.album-page,
+.history-page,
+.answers-page,
+.gift-page {
+  background-color: transparent !important;
+}
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.loading-screen {
+  min-height: 100vh;
+
+  width: 100%;
+
+  background: transparent !important;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+  .global-love-background img {
+    object-position: center center;
+  }
+}
